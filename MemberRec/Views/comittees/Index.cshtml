@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MemberRec.Models.comittee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ComitteeName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a  href="javascript:void(0);" class="anchorDetail text-primary" data-id="@item.ComitteeId">@item.ComitteeName</a>
+                    <p id="ComitteeName" hidden>@item.ComitteeName</p>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ComitteeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ComitteeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ComitteeId })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<div id="myModal" class="modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>&nbsp;<span id="ComitteeName"></span> Member Details</h5>
+            </div>
+            <div id="myModalContent">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

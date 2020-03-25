@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<style>
+    body {
+        background-image: url('../../Images/background (2).jpg');
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+    .panel{     
+        font-size: large;
+        margin-top:30px;
+    }  
+    
+</style>
+
+
+
+    <div class="row">
+        <div class="col-md-4 col-lg-3">
+            <div class="panel">
+                <div class="panel-heading" style="background-color:darkcyan;">
+                    <h4>Total Members</h4>
+                </div>
+                <div class="panel-body" style="background-color:black; color:white;">
+                    @ViewBag.count
+                </div>
+            </div>
+        </div>
+     
+            @Html.Action("Subranches", "Home")
+       
+    </div>
+
+   
+
+

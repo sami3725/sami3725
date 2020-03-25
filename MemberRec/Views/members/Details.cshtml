@@ -1,0 +1,138 @@
+﻿@model MemberRec.Models.member
+
+@{
+    ViewBag.Title = "Details";
+    
+}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    .panel{
+       margin-top:20px;
+    }
+   .panel-body{
+       border-style:solid;
+       border-color:black;
+       outline-style:solid;
+       font-size:medium;
+       
+   }
+   .panel-heading{
+       background-color:dimgray;
+       text-align:center;
+       color:white;
+       outline-style:solid;
+       outline-color:black;
+   }     
+   
+   #image
+    {
+       border-right:solid; 
+       border-right-color:black;
+    }
+  
+    
+</style>
+
+<div class="col-md-10 col-lg-offset-1">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3>@Html.DisplayFor(model=> model.Name)'s Profile</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6" id="image">
+                <div class="display-field">
+                    <img src="@Model.image" style="width:100%; height:auto;" />
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <dl class="dl-horizontal">
+                        <dt style="text-align:left">
+                            @Html.DisplayNameFor(model => model.MemberNo) :
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.MemberNo)
+                        </dd>
+
+                        <dt style="text-align:left">
+                            @Html.DisplayNameFor(model => model.Name):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+
+                        <dt style="text-align:left">
+                            @Html.DisplayNameFor(model => model.Address):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Address)
+                        </dd>
+
+                        <dt style="text-align:left">
+                            @Html.DisplayNameFor(model => model.PhoneNo):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.PhoneNo)
+                        </dd>
+
+                        <dt style="text-align:left">
+                            @Html.DisplayNameFor(model => model.PanNo):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.PanNo)
+                        </dd>
+
+                        <dt style="text-align:left">
+                            @Html.DisplayNameFor(model => model.RegistrationDate):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.RegistrationDate)
+                        </dd>
+
+                        <dt style="text-align:left">
+                            @Html.DisplayNameFor(model => model.BusinessType.BusinessTypeName):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.BusinessType.BusinessTypeName)
+                        </dd>
+
+                        <dt style="text-align:left">
+                            @Html.DisplayNameFor(model => model.Comittee.ComitteeName):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Comittee.ComitteeName)
+                        </dd>
+
+                        <dt style="text-align:left">
+                            @Html.DisplayNameFor(model => model.Post.PostName):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Post.PostName)
+                        </dd>
+                    </dl>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.MemberId }) |
+            @Html.ActionLink("Back", "Create","members")
+        </p>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<MemberRec.Models.member>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<style>
+    .panel-default{
+        border-style:solid;
+        border-color:black;
+        background:black;
+        outline-style:solid;
+        outline-color:gray;
+    }
+    .panel-footer{
+        background:black;
+    }
+    .panel{
+        
+        border-style:hidden;
+        border-color:black;
+        
+    }
+    .display-field{
+        margin-top:3px;
+    }
+    
+    .panel-body{
+        color:white;
+    }
+      
+    
+   
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 panel">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="display-field">                           
+                            <a href="@Url.Action( "Details","members", new { id = item.MemberId })">
+                                <img src="@item.image" style="width:100%; height:250px;" alt="" />
+                            </a>                           
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group row card-title">
+                            <label for="name" class="col-md-5 col-form-label">Name</label>
+                            <div class="col-md-7">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-md-5 col-form-label">Address</label>
+                            <div class="col-md-7">
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-5 col-form-label">Phone</label>
+                            <div class="col-md-7">
+                                @Html.DisplayFor(modelItem => item.PhoneNo)
+                            </div>
+                        </div>                       
+                            <div class="form-group row">
+                                <label for="checkbox" class="col-md-5 col-form-label">Suspend</label>
+                                <div class="col-md-7">
+                                    <input type="checkbox" class="form-control suspend" value="@item.MemberId" />
+                                </div>
+                            </div>                                               
+                            <div class="form-group">
+                                <div class="input-group-btn">
+                                    <input type="button" class="btn btn-default payment" data-toggle="modal" data-target="#create" value="Pay" data-id="@item.MemberId" />
+                                </div>
+                            </div>
+                    </div>                     
+              </div>
+            </div>
+
+          }
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+﻿@model MemberRec.Models.SubBranch
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SubBranch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubBranchName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubBranchName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SubBranchId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

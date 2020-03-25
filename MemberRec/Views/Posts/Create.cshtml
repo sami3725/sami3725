@@ -1,0 +1,44 @@
+﻿@model MemberRec.Models.Post
+
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm("Create", "Posts"))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Posts</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body ">
+            <div class="form-horizontal">
+                
+                    @Html.ValidationSummary(true, "", new { @class = "text-white" })
+                <div class="form-group">
+                   
+                        @Html.LabelFor(model => model.PostName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-110">
+                            @Html.EditorFor(model => model.PostName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PostName, "", new { @class = "text-white" })
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" value="Create" class="btn btn-outline-dark" />
+        </div>
+    </div>
+}
+
+

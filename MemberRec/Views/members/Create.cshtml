@@ -1,0 +1,285 @@
+﻿@model MemberRec.Models.member
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div>
+    <ul class="nav nav-tabs" id="mytab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active btn-outline-dark" id="home-tab" data-toggle="tab" href="#member" role="tab" aria-controls="home" aria-selected="true">
+
+                <i class="glyphicon glyphicon-list-alt"></i>
+                Create Members
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link btn-outline-dark" id="index-tab" data-toggle="tab" href="#index" role="tab" aria-controls="" aria-selected="true">
+                <i class="fas fa-user-friends"></i> Members
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link btn-outline-dark" id="index-tab" data-toggle="tab" href="#comittees" role="tab" aria-controls="" aria-selected="true">
+                Comittees
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content" id="tabcontent">
+    <div class="tab-pane active" id="member" role="tabpanel" aria-labelledby="home-tab">
+        <div class="form-row">
+
+            <hr />
+
+            @using (Html.BeginForm("Create", "members", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="col-md-3">
+                    <div class="form-horizontal">
+                        @Html.LabelFor(model => model.MemberNo, "Member No", htmlAttributes: new { @class = "control-label" })
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.MemberNo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MemberNo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-2">
+                    <div class="form-horizontal">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal col-md-3">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal col-md-3">
+                    @Html.LabelFor(model => model.PhoneNo, "Phone No", htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal col-md-3">
+                    @Html.LabelFor(model => model.PanNo, "Pan No", htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.PanNo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PanNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal col-md-3">
+                    @Html.LabelFor(model => model.RegistrationDate, "Registration Date", htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.RegistrationDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.RegistrationDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal col-md-3">
+                    @Html.LabelFor(model => model.ComitteeId, "Comittee Id", htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group">
+                        <div class=" input-group col-md-9">
+                            <div class="input-group-btn">
+                                @Html.DropDownList("ComitteeId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComitteeId, "", new { @class = "text-danger" })
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ComitteeModal">
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal col-md-3">
+                    @Html.LabelFor(model => model.PostId, "Post Id", htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group">
+
+                        <div class=" input-group col-md-9">
+                            <div class="input-group-btn">
+                                @Html.DropDownList("PostId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.PostId, "", new { @class = "text-danger" })
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#PostModal">
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal col-md-3">
+                    @Html.LabelFor(model => model.BusinessTypeId, "BusinessType Id", htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group offset-2">
+                        <div class="input-group col-md-9">
+                            <div class="input-group-btn">
+                                @Html.DropDownList("BusinessTypeId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.BusinessTypeId, "", new { @class = "text-danger" })
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#BusinessTypeModal">
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal col-md-3">
+                    @Html.LabelFor(model => model.SubBranchId, "SubBranchId", htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group">
+                        <div class="input-group col-md-9">
+                            <div class="input-group-btn">
+                                @Html.DropDownList("SubBranchId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SubBranchId, "", new { @class = "text-danger" })
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#SubBranchModal">
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-horizontal col-md-3">
+                   @Html.LabelFor(model => model.image, "Image", htmlAttributes: new { @class="control-label"})
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="file" name="Image" id="Image" class="form-control" />
+                        </div>
+                    </div>                   
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="index" role="tabpanel" aria-labelledby="profile-tab">
+        <br />
+        @Html.Action("Index", "members")
+    </div>
+
+    <div class="tab-pane fade" id="comittees" role="tabpanel" aria-labelledby="profile-tab">
+        <br />
+        @Html.Action("Index", "Comittees")
+
+    </div>
+</div>
+
+
+
+@Html.Action("Modal", "members")
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="~/Content/nepaliDatePicker.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.nepaliDatePicker.js"></script>
+
+    <script>
+
+        $("#RegistrationDate").nepaliDatePicker({
+            dateformat: "%D, %M %d, %y",
+            closeOnDateSelect: true,
+        });
+        $(".payment").click(function () {
+            var id = $(this).attr("data-id");
+            $("#MemberId").val(id);
+        });
+
+        $("#Date").nepaliDatePicker({
+            dateFormat: "%D, %M %d, %y",
+            closeOnDateSelect: true,
+        });
+
+
+
+        $("#FeeDataId").change(function (e) {
+            var data;
+            feedataid = document.getElementById("FeeDataId").value;
+            $.ajax({
+                url: 'fetchfeedata',
+                method: 'get',
+                data: { feedataid: feedataid },
+                datatype: 'json',
+                cache: false,
+                success: function (response) {
+                    $("#Amount").val(response.amount);
+                }
+            })
+        })
+
+        var TeamDetailPostBackURL = '/members/Index1';
+
+        $(".anchorDetail").click(function () {
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id');
+            alert(id);
+            $.ajax({
+                type: "GET",
+                url: TeamDetailPostBackURL,
+                contentType: "application/json; charset=utf-8",
+                data: { "Id": id },
+                datatype: "json",
+                success: function (data) {
+                    $('#myModalContent').html(data);
+                    $('#myModal').modal('show');
+
+                },
+                error: function () {
+                    alert("Dynamic content load failed.");
+                }
+            });
+        });
+
+       
+
+      $(".suspend").click(function () {
+          var value = $(this).val();
+         
+          $.ajax({
+              type: 'POST',
+              url: "/members/checkbox",
+              data:{ "checkboxvalue": value},
+              dataType: "json",
+               success: function (result) {
+                            alert(result);
+                        },
+              error: function () {
+                  alert("fail");
+             }
+
+          });
+            
+        });
+
+    </script>
+}
